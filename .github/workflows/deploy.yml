@@ -1,4 +1,4 @@
-name: Dev Server
+name: Staging Server
 
 on:
   push:
