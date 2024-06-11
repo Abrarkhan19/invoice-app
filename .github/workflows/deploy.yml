@@ -4,13 +4,13 @@ on:
   push:
     branches:
       - master
-      
     tags:
       - v*
-  pull_request: 
+
+  pull_request:
 
 env:
-  IMAGE_NAME: staging-server
+  IMAGE_NAME: dev-server
 
 jobs:
   build:
@@ -24,8 +24,7 @@ jobs:
         shell: bash
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
       - name: Build image
         run: docker build . --file Dockerfile --tag $IMAGE_NAME
@@ -49,7 +48,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Execute remote SSH commands
+      - name: executing remote ssh commands using ssh key
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.DEV_SERVER_URL }}
