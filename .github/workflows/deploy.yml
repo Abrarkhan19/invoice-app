@@ -10,7 +10,7 @@ on:
   pull_request: 
 
 env:
-  IMAGE_NAME: dev-server
+  IMAGE_NAME: staging-server
 
 jobs:
   build:
