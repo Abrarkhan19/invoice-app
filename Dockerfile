@@ -1,16 +1,11 @@
-FROM node:18.19.0
+FROM node:18-alpine
 
-WORKDIR /opt/app
+WORKDIR  /usr/src/app
 
-COPY package*.json ./
+COPY . .
+
 RUN npm install
-
-COPY src ./src
-COPY .babelrc ./
-COPY config.js ./
-
-RUN npm run build
 
 EXPOSE 3000
 
-CMD ["npm", "start"]
+CMD ["npm","start"]
